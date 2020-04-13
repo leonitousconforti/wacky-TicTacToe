@@ -1,16 +1,5 @@
 /*jshint esversion: 6 */
-
-// You can see everything a little bit better if you make the console a little bigger!
 console.clear();
-
-let players = ["bob", "frank", "alice", "june"];
-let symbols = ["Bo", "F", "Al", "Jne"];
-let lengthToWin = 3;
-let numOfCols = 5;
-let numOfRows = 4;
-
-tic_tac_toe = new ticTacToe(numOfCols, numOfRows, lengthToWin, symbols, players);
-tic_tac_toe.play();
 
 /**
  * A tic tac toe board for wacky sizes and the ability for as many players as you want!
@@ -46,16 +35,16 @@ function ticTacToe(_cols, _rows, _winLength, _symbols, _playerNames) {
 
     // Check the inputs supplied
     if ((this.winLength > this.rows) || (this.winLength > this.cols)) {
-        console.error("ERROR: winLength can not exceed the width or height of your board!");
+        console.error("WinLength can not exceed the width or height of your board!");
         return this.emptyObj;
     } else if ((this.cols <= 0) || (this.rows <= 0)) {
-        console.error("ERROR: the cols and rows must be greater than 0!");
+        console.error("The cols and rows must be greater than 0!");
         return this.emptyObj;
     } else if ((this.cols >= 100) || (this.rows >= 100)) {
-        console.log("things are going to start to look funny, thats a really big board!");
+        console.log("Things are going to start to look funny, thats a really big board!");
     }
     if (this.playerNames.length != this.symbols.length) {
-    	console.error("ERROR: the number of symbols and the number of players must match!");
+    	console.error("The number of symbols and the number of players must match!");
     	return this.emptyObj;
     }
 
@@ -72,7 +61,7 @@ function ticTacToe(_cols, _rows, _winLength, _symbols, _playerNames) {
         }
 
         if (this.symbols[i] == "#") {
-            console.error("ERROR: no player can select the symbol: # (it is reserved). Select a new symbol to play again");
+            console.error("No player can select the symbol: # (it is reserved). Select a new symbol to play again");
             return this.emptyObj;
         }
     }
@@ -133,7 +122,7 @@ function ticTacToe(_cols, _rows, _winLength, _symbols, _playerNames) {
     	
     	// Check the player argument
         if (this.playerNames.indexOf(player) <= -1) {
-            console.error("ERROR: you must supply a valid player when calling makeMove()");
+            console.error("You must supply a valid player when calling makeMove()");
             return -1;
         }
         
@@ -268,7 +257,7 @@ function ticTacToe(_cols, _rows, _winLength, _symbols, _playerNames) {
             // Funky business to bind the pointer of this for the setInterval function
             let that = this;
             
-            // Ask the player to make their move (The setTimeout is necessary so the console log shows up)
+            // Ask the player to make their move (The setTimeout is necessary so the console log shows up before the prompt)
 			setTimeout(function() {
 				let move = prompt("What position would you like to select?");
 				let confir = confirm("Are you sure you want to select position: " + move + "?");
@@ -327,29 +316,3 @@ function ticTacToe(_cols, _rows, _winLength, _symbols, _playerNames) {
         }
     }; // End play method
 }
-
-
-
-
-
-// I HATE THAT THIS WORKS BUT IT IS THE ONLY WAY TO GET 'console.log()' TO SHOW UP BEFORE 'prompt()' TAKES OVER!
-/**
-function PromptBeforeConsole() {
-	console.log("here!");
-	setTimeout(function() {
-		let data = prompt("?");
-		console.log(data);
-	}, 100);
-}
-PromptBeforeConsole();
-*/
-
-// Calling like this:
-/**
-console.log("here");
-let data = prompt("?")
-console.log(data);
-*/
-// Causes the "here" text to be displayed after the prompt finishes!
-// Which for the game does not work because the player needs to see
-// the board before making a selection!

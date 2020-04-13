@@ -1,6 +1,6 @@
 # wacky TicTacToe
 
-A tic tac toe board for wacky sizes and the ability for as many players as you want! The game detects winners in all directions (horizontally, vertically, and diagonally). Check it out [here](https://leoconforti.us/wacky-tic-tac-toe).
+A tic tac toe board for wacky sizes and the ability for as many players as you want! The game detects winners in all directions (horizontally, vertically, and diagonally). The game has no ui, instead, it uses the javascript console.
 
 ## usage
 
